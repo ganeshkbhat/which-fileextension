@@ -11,6 +11,30 @@ detect if a file extension is text/ binary or file is text/ binary
 * detect if file is binary
 
 
+### USAGE
+
+
+`detect`, `isExtension`, `isTextExtension`, `isBinaryExtension`, 
+
+```
+
+```
+
+
+`getEncoding`, `isText`, `isBinary`
+
+```
+
+```
+
+
+`binaryExtensions`, `textExtensions`
+
+
+```
+
+```
+
 ### Credits and References:
 
 [binaryextensions](https://www.npmjs.com/package/binaryextensions)
