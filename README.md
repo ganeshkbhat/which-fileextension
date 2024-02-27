@@ -1,6 +1,6 @@
 # detect-fileextensions
 
-detect if a file extentsion is text/ binary or file is text/ binary
+detect if a file extension is text/ binary or file is text/ binary
 
 * detect file extensions 
 * check your file extension using provided string or array
