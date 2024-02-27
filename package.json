@@ -71,7 +71,14 @@
     "text",
     "typed",
     "types",
-    "typescript"
+    "typescript",
+    "ext",
+    "extensions",
+    "file",
+    "path",
+    "check",
+    "detect",
+    "has"
   ],
   "author": "",
   "license": "MIT",
