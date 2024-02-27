@@ -1,14 +1,15 @@
 # detect-fileextensions
 
-* detect file extensions
-* check your file extention
+* detect file extensions 
+* check your file extension using provided string or array
 * check if file is part of list of extension
-* detect
-
+* detect file extension is text
+* detect file extension is binary
+* detect if file is text
+* detect if file is binary
 
 
 ### Credits and References:
-
 
 [binaryextensions](https://www.npmjs.com/package/binaryextensions)
 [textextensions](https://www.npmjs.com/package/textextensions)
