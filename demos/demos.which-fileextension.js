@@ -16,22 +16,22 @@
 
 const dr = require("../index.js");
 
-console.log(dr.textExtensions);
-console.log(dr.binaryExtensions);
-dr.detect("test/tester.jpg", dr.binaryExtensions) // true
-dr.detect("test/tester.jpg", dr.textExtensions) // false
+// console.log(dr.textExtensions);
+// console.log(dr.binaryExtensions);
+console.log(dr.detect("test/tester.jpg", dr.binaryExtensions), true) // true
+console.log(dr.detect("test/tester.jpg", dr.textExtensions), false) // false
 
 
-dr.isText("test/tester.txt") // true
-dr.isBinary("test/tester.exe") // true
+console.log(dr.isText("test/tester.txt"), true) // true
+console.log(dr.isBinary("test/tester.exe"), true) // true
 
 
-dr.detect("test/tester.jpg", dr.binaryExtensions) // true
-dr.detect("test/tester.jpg", dr.textExtensions) // false
-dr.detect("test/tester.jpg", ["gz", "txt", "jpg", "jpeg"]) // true`
-dr.isExtension("test/tester.jpg", "jpg") // true
-dr.isExtension("test/tester.jpg", "txt") // false
-dr.isTextExtension("test/tester.txt") // true
-dr.isTextExtension("test/tester.jpeg") // false
-dr.isBinaryExtension("test/tester.jpeg") // true
+console.log(dr.detect("test/tester.jpg", dr.binaryExtensions), true) // true
+console.log(dr.detect("test/tester.jpg", dr.textExtensions), false) // false
+console.log(dr.detect("test/tester.jpg", ["gz", "txt", "jpg", "jpeg"]), true) // true`
+console.log(dr.isExtension("test/tester.jpg", "jpg"), true) // true
+console.log(dr.isExtension("test/tester.jpg", "txt"), false) // false
+console.log(dr.isTextExtension("test/tester.txt"), true) // true
+console.log(dr.isTextExtension("test/tester.jpeg"), false) // false
+console.log(dr.isBinaryExtension("test/tester.jpeg"), true) // true
 
