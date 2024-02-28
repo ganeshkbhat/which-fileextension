@@ -801,7 +801,7 @@ function isLaterByteOfUtf8(byte) {
 
 if (!isBrowser()) {
   module.exports = {
-    getEncoding,
+    // getEncoding,
     isText,
     isBinary,
     detect,
