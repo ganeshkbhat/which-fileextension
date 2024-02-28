@@ -1,6 +1,6 @@
 {
   "title": "detect file extensions, check if text or binary file, or get list of text or binary file extensions",
-  "name": "which-fileextensions",
+  "name": "which-fileextension",
   "version": "1.0.0",
   "description": "detect file extensions, check if text or binary file, or get list of text or binary file extensions",
   "main": "index.js",
