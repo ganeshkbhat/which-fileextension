@@ -20,9 +20,9 @@ detect if a file extension is text/ binary or file is text/ binary
 
 const dr = require("detect-fileextensions");
 
-dr.detect("test/tester.jpg", dr.binaryExtensions) // true
+`dr.detect("test/tester.jpg", dr.binaryExtensions) // true
 dr.detect("test/tester.jpg", dr.textExtensions) // false
-dr.detect("test/tester.jpg", ["gz", "txt", "jpg", "jpeg"]) // true
+dr.detect("test/tester.jpg", ["gz", "txt", "jpg", "jpeg"]) // true`
 dr.isExtension("test/tester.jpg", "jpg") // true
 dr.isExtension("test/tester.jpg", "txt") // false
 dr.isTextExtension("test/tester.txt") // true

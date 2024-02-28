@@ -1,5 +1,19 @@
+/**
+ * 
+ * Package: 
+ * Author: Ganesh B
+ * Description: 
+ * Install: npm i  --save
+ * Github: https://github.com/ganeshkbhat/
+ * npmjs Link: https://www.npmjs.com/package/
+ * File: index.js
+ * File Description: 
+ * 
+*/
 
+/* eslint no-console: 0 */
 
+'use strict';
 
 /**
  * isBrowser
@@ -14,7 +28,7 @@ function isBrowser() {
   if (typeof window === "object") { return true; }
 }
 
-const b = [
+const binaryExtensions = [
   "3dm",
   "3ds",
   "3g2",
@@ -275,7 +289,7 @@ const b = [
   "zipx"
 ];
 
-const t = [
+const textExtensions = [
   'Dockerfile',
   'Makefile',
   'Rakefile',
@@ -571,31 +585,29 @@ const t = [
   'zshrc',
 ]
 
-const binaryExtensions = b;
-const textExtensions = t;
-
-const sc = [
-  ".html", ".php",
-  ".php2", ".php3",
-  ".phpt", ".phtml",
-  ".phar", ".do",
-  ".svg", ".action",
-  ".cgi", ".asp",
-  ".ashx", ".cshtml",
-  ".js", ".xml",
-  ".php7", ".asmx",
-  ".jsp", ".cgi",
-  ".htm", ".cer",
-  ".aspx ", ".php4",
-  ".php5", ".odt"
+const scriptInjectionExtensions = [
+  "html", "php",
+  "php2", "php3",
+  "phpt", "phtml",
+  "phar", "do",
+  "svg", "action",
+  "cgi", "asp",
+  "ashx", "cshtml",
+  "js", "xml",
+  "php7", "asmx",
+  "jsp", "cgi",
+  "htm", "cer",
+  "aspx ", "php4",
+  "php5", "odt",
+  "sh", "bat"
 ];
 
 function isBinaryExtension(str) {
-  return !!detect(str, b);
+  return !!detect(str, binaryExtensions);
 }
 
 function isTextExtension(str) {
-  return !!detect(str, t);
+  return !!detect(str, textExtensions);
 }
 
 function isExtension(str, ext) {
@@ -610,7 +622,6 @@ function detect(str, arr) {
 
 // consider browser compatible implementation
 // https://www.npmjs.com/package/istextorbinary?activeTab=code
-
 
 function isBinary(filename, buffer) {
   const text = isText(filename, buffer);
@@ -798,6 +809,7 @@ if (!isBrowser()) {
     isTextExtension,
     isBinaryExtension,
     binaryExtensions,
-    textExtensions
+    textExtensions,
+    scriptInjectionExtensions
   }
 }
