@@ -36,7 +36,6 @@ dr.isBinaryExtension("test/tester.jpeg") // true
 ```
 const dr = require("which-fileextension");
 
-dr.getEncoding("test/tester.txt") // UTF-8
 dr.isText("test/tester.txt") // true
 dr.isBinary("test/tester.exe") // true
 ```
