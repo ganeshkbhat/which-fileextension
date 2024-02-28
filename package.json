@@ -1,15 +1,32 @@
 {
   "title": "detect file extensions, check if text or binary file, or get list of text or binary file extensions",
-  "name": "detect-fileextensions",
+  "name": "which-fileextensions",
   "version": "1.0.0",
   "description": "detect file extensions, check if text or binary file, or get list of text or binary file extensions",
   "main": "index.js",
+  "exports": {
+    "require": "./index.js",
+    "import": "./index.mjs"
+  },
+  "unpkg": "index.min.js",
   "directories": {
     "test": "test"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ganeshkbhat/which-fileextension.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ganeshkbhat/which-fileextension/issues"
+  },
+  "homepage": "https://github.com/ganeshkbhat/which-fileextension#readme",
   "scripts": {
-    "types": "npx tsc",
     "test": "mocha --reporter spec --recursive --timeout 60000"
+  },
+  "pre-commit": {
+    "run": [
+      "test"
+    ]
   },
   "keywords": [
     "binary",
@@ -86,12 +103,15 @@
     "@types/chai": "^4.3.11",
     "@types/eslint": "^8.56.2",
     "@types/mocha": "^10.0.6",
-    "@types/node": "^20.11.20",
-    "chai": "^5.0.3",
-    "eslint": "^8.56.0",
+    "@types/node": "^20.11.16",
+    "chai": "^4.4.1",
+    "live-server": "^1.2.2",
     "mocha": "^10.2.0",
+    "pre-commit": "^1.2.2",
+    "pre-push": "^0.1.4",
     "sinon": "^17.0.1",
     "typescript": "^5.3.3",
+    "uglify-js": "^3.17.4",
     "unimported": "^1.31.1"
   }
 }
