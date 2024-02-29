@@ -97,14 +97,23 @@ describe('[which-fileextension tests] detect which file extension is of a file u
     expect(isText("test/tester.gz")).to.deep.equal(!expected);
   });
 
-  // it('should detect text file using buffer', () => {
-  //   expect(isText("test/tester.jpg")).to.deep.equal(expected);
-  //   expect(isText("test/tester.jpg")).to.deep.equal(expected);
-  //   expect(isText("test/tester.jpg")).to.deep.equal(expected);
-  //   expect(isText("test/tester.jpg")).to.deep.equal(expected);
-  //   expect(isText("test/tester.jpg")).to.deep.equal(expected);
-  //   expect(isText("test/tester.jpg")).to.deep.equal(expected);
-  // });
+  it('should detect text file using buffer', () => {
+    const expected = true;
+    const fs = require("fs");
+
+    let txt = fs.readFileSync("./demos/demos.which-fileextension.js");
+    let png = fs.readFileSync("./demos/img-black.png");
+    let jpeg = fs.readFileSync("./demos/img-red.jpg");
+    let gif = fs.readFileSync("./demos/img-yellow.gif");
+
+    expect(isText("demos.which-fileextension.js", txt)).to.deep.equal(expected);
+    expect(isText("img-black.png", png)).to.deep.equal(!expected);
+    expect(isText("img-red.jpg", jpeg)).to.deep.equal(!expected);
+    expect(isText("img-red.jpeg", jpeg)).to.deep.equal(!expected);
+    expect(isText("img-yellow.gif", gif)).to.deep.equal(!expected);
+    expect(isText("test/tester.txt", Buffer.from(`This is a text`))).to.deep.equal(expected);
+    expect(isText("test/tester.txt", Buffer.from("This is another text"))).to.deep.equal(expected);
+  });
 
   it('should detect binary file using extention', () => {
     const expected = true;
@@ -132,31 +141,42 @@ describe('[which-fileextension tests] detect which file extension is of a file u
     expect(isBinary("test/tester.bin")).to.deep.equal(expected);
   });
 
-  // it('should detect binary file using buffer', () => {
-  //   const expected = true;
-  //   expect(isBinary("test/tester.txt", )).to.deep.equal(!expected);
-  //   expect(isBinary("test/tester.ini", )).to.deep.equal(!expected);
-  //   expect(isBinary("test/tester.yaml", )).to.deep.equal(!expected);
-  //   expect(isBinary("test/tester.xml", )).to.deep.equal(!expected);
-  //   expect(isBinary("test/tester.html", )).to.deep.equal(!expected);
-  //   expect(isBinary("test/tester.json", )).to.deep.equal(!expected);
-  //   expect(isBinary("test/tester.csv", )).to.deep.equal(!expected);
-  //   expect(isBinary("test/tester.jpg", )).to.deep.equal(expected);
-  //   expect(isBinary("test/tester.jpeg", )).to.deep.equal(expected);
-  //   expect(isBinary("test/tester.mp3", )).to.deep.equal(expected);
-  //   expect(isBinary("test/tester.mp4", )).to.deep.equal(expected);
-  //   expect(isBinary("test/tester.wav", )).to.deep.equal(expected);
-  //   expect(isBinary("test/tester.zip", )).to.deep.equal(expected);
-  //   expect(isBinary("test/tester.gz", )).to.deep.equal(expected);
-  //   expect(isBinary("test/tester.xz", )).to.deep.equal(expected);
-  //   expect(isBinary("test/tester.flv", )).to.deep.equal(expected);
-  //   expect(isBinary("test/tester.xls", )).to.deep.equal(expected);
-  //   expect(isBinary("test/tester.odt", )).to.deep.equal(expected);
-  //   expect(isBinary("test/tester.doc", )).to.deep.equal(expected);
-  //   expect(isBinary("test/tester.docx", )).to.deep.equal(expected);
-  //   expect(isBinary("test/tester.exe", )).to.deep.equal(expected);
-  //   expect(isBinary("test/tester.bin", )).to.deep.equal(expected);
-  // });
+  it('should detect binary file using buffer', () => {
+    const fs = require("fs");
+
+    let txt = fs.readFileSync("./demos/demos.which-fileextension.js");
+    let png = fs.readFileSync("./demos/img-black.png");
+    let jpeg = fs.readFileSync("./demos/img-red.jpg");
+    let gif = fs.readFileSync("./demos/img-yellow.gif");
+
+    const expected = true;
+    expect(isBinary("test/tester.txt", txt)).to.deep.equal(!expected);
+    expect(isBinary("test/tester.txt", txt.toString("utf-8"))).to.deep.equal(!expected);
+    expect(isBinary("test/tester.ini", txt)).to.deep.equal(!expected);
+    expect(isBinary("test/tester.yaml", txt)).to.deep.equal(!expected);
+    expect(isBinary("test/tester.xml", txt)).to.deep.equal(!expected);
+    expect(isBinary("test/tester.html", txt)).to.deep.equal(!expected);
+    expect(isBinary("test/tester.json", JSON.stringify({ "test": "tester" }))).to.deep.equal(!expected);
+    expect(isBinary("test/tester.csv", txt)).to.deep.equal(!expected);
+    expect(isBinary("img-red.jpg", jpeg)).to.deep.equal(expected);
+    expect(isBinary("img-red.jpeg", jpeg)).to.deep.equal(expected);
+    expect(isBinary("img-black.png", png)).to.deep.equal(expected);
+    expect(isBinary("img-yellow.gif", gif)).to.deep.equal(expected);
+    // FALSE POSITIVES
+    expect(isBinary("test/tester.mp3", txt)).to.deep.equal(expected);
+    expect(isBinary("test/tester.mp4", txt)).to.deep.equal(expected);
+    expect(isBinary("test/tester.wav", txt)).to.deep.equal(expected);
+    expect(isBinary("test/tester.zip", txt)).to.deep.equal(expected);
+    expect(isBinary("test/tester.gz", txt)).to.deep.equal(expected);
+    expect(isBinary("test/tester.xz", txt)).to.deep.equal(expected);
+    expect(isBinary("test/tester.flv", txt)).to.deep.equal(expected);
+    expect(isBinary("test/tester.xls", txt)).to.deep.equal(expected);
+    expect(isBinary("test/tester.odt", txt)).to.deep.equal(expected);
+    expect(isBinary("test/tester.doc", txt)).to.deep.equal(expected);
+    expect(isBinary("test/tester.docx", txt)).to.deep.equal(expected);
+    expect(isBinary("test/tester.exe", txt)).to.deep.equal(expected);
+    expect(isBinary("test/tester.bin", txt)).to.deep.equal(expected);
+  });
 
   it('should detect text file using provided extentions', () => {
     const expected = true;
@@ -186,7 +206,7 @@ describe('[which-fileextension tests] detect which file extension is of a file u
     expect(detect("test/tester.docx", binaryExtensions)).to.deep.equal(expected);
     expect(detect("test/tester.exe", binaryExtensions)).to.deep.equal(expected);
     expect(detect("test/tester.bin", binaryExtensions)).to.deep.equal(expected);
-    
+
   });
 
   it('should detect any file using provided extentions', () => {
@@ -255,7 +275,7 @@ describe('[which-fileextension tests] detect which file extension is of a file u
     expect(isExtension("test/tester.csv", "csv")).to.deep.equal(expected);
     expect(isExtension("test/tester.json", "json")).to.deep.equal(expected);
     expect(isExtension("test/tester.asp", "asp")).to.deep.equal(expected);
-    
+
     expect(isExtension("test/tester.txt", "txts")).to.deep.equal(!expected);
     expect(isExtension("test/tester.ini", "icni")).to.deep.equal(!expected);
     expect(isExtension("test/tester.yaml", "yacml")).to.deep.equal(!expected);
@@ -268,7 +288,7 @@ describe('[which-fileextension tests] detect which file extension is of a file u
     expect(isExtension("test/tester.csv", "tsv")).to.deep.equal(!expected);
     expect(isExtension("test/tester.json", "cjson")).to.deep.equal(!expected);
     expect(isExtension("test/tester.asp", "aspx")).to.deep.equal(!expected);
-    
+
   });
 
   it('should detect binary file using isExtension', () => {

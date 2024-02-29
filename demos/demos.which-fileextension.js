@@ -16,8 +16,8 @@
 
 'use strict';
 
-const fs = require("fs");
 const dr = require("../index.js");
+const fs = require("fs");
 
 let txt = fs.readFileSync("./demos/demos.which-fileextension.js");
 let png = fs.readFileSync("./demos/img-black.png");

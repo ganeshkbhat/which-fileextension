@@ -117,6 +117,29 @@ console.log(dr.isBinaryExtension("test/tester.jpeg"), true) // true
 
 ```
 
+
+### FALSE POSITIVES
+
+```
+
+// FALSE POSITIVES
+
+expect(isBinary("test/tester.mp3", txt)).to.deep.equal(expected);
+expect(isBinary("test/tester.mp4", txt)).to.deep.equal(expected);
+expect(isBinary("test/tester.wav", txt)).to.deep.equal(expected);
+expect(isBinary("test/tester.zip", txt)).to.deep.equal(expected);
+expect(isBinary("test/tester.gz", txt)).to.deep.equal(expected);
+expect(isBinary("test/tester.xz", txt)).to.deep.equal(expected);
+expect(isBinary("test/tester.flv", txt)).to.deep.equal(expected);
+expect(isBinary("test/tester.xls", txt)).to.deep.equal(expected);
+expect(isBinary("test/tester.odt", txt)).to.deep.equal(expected);
+expect(isBinary("test/tester.doc", txt)).to.deep.equal(expected);
+expect(isBinary("test/tester.docx", txt)).to.deep.equal(expected);
+expect(isBinary("test/tester.exe", txt)).to.deep.equal(expected);
+expect(isBinary("test/tester.bin", txt)).to.deep.equal(expected);
+
+```
+
 ### Credits and References:
 
 [binaryextensions](https://www.npmjs.com/package/binaryextensions)

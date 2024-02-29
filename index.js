@@ -628,6 +628,9 @@ function isBinary(filename, buffer) {
   const text = isText(filename, buffer);
   if (text == null)
     return null;
+  // this fails with a binary filename and 
+  let b = getEncoding(buffer) === "binary";
+  // (!!buffer) ? !!b : false
   return !text;
 }
 
