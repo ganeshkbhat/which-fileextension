@@ -120,9 +120,11 @@ console.log(dr.isBinaryExtension("test/tester.jpeg"), true) // true
 
 ### FALSE POSITIVES
 
+Please remmber there may be `FALSE POSITIVES` like below
+
 ```
 
-// FALSE POSITIVES
+const expected = true; 
 
 expect(isBinary("test/tester.mp3", txt)).to.deep.equal(expected);
 expect(isBinary("test/tester.mp4", txt)).to.deep.equal(expected);
