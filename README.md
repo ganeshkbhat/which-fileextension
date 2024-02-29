@@ -1,8 +1,9 @@
 # which-fileextension
 
-detect if a file extension is text/ binary or file is text/ binary
+detect if a file extension is text/ binary or file is text/ binary. uses the `file.ext` and the `file.ext.exttwo` detection pattern structure
 
 * detect file extensions 
+* detect if one of many possible script injection files
 * check your file extension using provided string or array
 * check if file is part of list of extension
 * detect file extension is text
