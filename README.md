@@ -17,39 +17,102 @@ detect if a file extension is text/ binary or file is text/ binary
 `detect`, `isExtension`, `isTextExtension`, `isBinaryExtension`, 
 
 ```
+
+const dr = require("which-fileextension");
+const fs = require("fs");
+
+let txt = fs.readFileSync("./demos/demos.which-fileextension.js");
+let png = fs.readFileSync("./demos/img-black.png");
+let jpeg = fs.readFileSync("./demos/img-red.jpg");
+let gif = fs.readFileSync("./demos/img-yellow.gif");
+
+```
+
+// list of all textExtensions, binaryExtensions, scriptInjectionExtensions
+
+```
+
+const dr = require("which-fileextension");
+const fs = require("fs");
+
+let txt = fs.readFileSync("./demos/demos.which-fileextension.js");
+let png = fs.readFileSync("./demos/img-black.png");
+let jpeg = fs.readFileSync("./demos/img-red.jpg");
+let gif = fs.readFileSync("./demos/img-yellow.gif");
+
+// console.log(dr.textExtensions);
+// console.log(dr.binaryExtensions);
+// console.log(dr.scriptInjectionExtensions);
+
+```
+
+// detect
+
+```
+
 const dr = require("which-fileextension");
 
-dr.detect("test/tester.jpg", dr.binaryExtensions) // true
-dr.detect("test/tester.jpg", dr.textExtensions) // false
-dr.detect("test/tester.jpg", ["gz", "txt", "jpg", "jpeg"]) // true`
-dr.isExtension("test/tester.jpg", "jpg") // true
-dr.isExtension("test/tester.jpg", "txt") // false
-dr.isTextExtension("test/tester.txt") // true
-dr.isTextExtension("test/tester.jpeg") // false
-dr.isBinaryExtension("test/tester.jpeg") // true
-```
-
-
-<!-- `getEncoding`,  -->
-`isText`, `isBinary`
+console.log(dr.detect("test/tester.jpg", dr.binaryExtensions), true) // true
+console.log(dr.detect("test/tester.jpg", dr.textExtensions), false) // false
 
 ```
+
+// isText
+
+```
+
 const dr = require("which-fileextension");
 
-dr.isText("test/tester.txt") // true
-dr.isBinary("test/tester.exe") // true
-```
-
-
-`binaryExtensions`, `textExtensions`
+console.log(dr.isText("test/tester.txt"), true) // true
+console.log(dr.isText("test/tester.txt", txt), true) // true
 
 ```
+
+// isBinary
+
+```
+
 const dr = require("which-fileextension");
 
-console.log(dr.textExtensions);
-console.log(dr.binaryExtensions);
-dr.detect("test/tester.jpg", dr.binaryExtensions) // true
-dr.detect("test/tester.jpg", dr.textExtensions) // false
+console.log(dr.isBinary("test/tester.exe"), true) // true
+console.log(dr.isBinary("./demos/img-red.jpg", jpeg), true) // true
+console.log(dr.isBinary("./demos/img-black.png", png), true) // true
+console.log(dr.isBinary("./demos/img-yellow.gif", gif), true) // true
+
+```
+
+// detect
+
+```
+
+const dr = require("which-fileextension");
+
+console.log(dr.detect("test/tester.jpg", dr.binaryExtensions), true) // true
+console.log(dr.detect("test/tester.jpg", dr.textExtensions), false) // false
+console.log(dr.detect("test/tester.jpg", ["gz", "txt", "jpg", "jpeg"]), true) // true`
+
+```
+
+// isExtension
+
+```
+
+const dr = require("which-fileextension");
+
+console.log(dr.isExtension("test/tester.jpg", "jpg"), true) // true
+console.log(dr.isExtension("test/tester.jpg", "txt"), false) // false
+console.log(dr.isTextExtension("test/tester.txt"), true) // true
+console.log(dr.isTextExtension("test/tester.jpeg"), false) // false
+
+```
+
+// isBinaryExtension
+
+```
+
+const dr = require("which-fileextension");
+console.log(dr.isBinaryExtension("test/tester.jpeg"), true) // true
+
 ```
 
 ### Credits and References:
