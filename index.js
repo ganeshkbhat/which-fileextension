@@ -804,7 +804,7 @@ function isLaterByteOfUtf8(byte) {
 }
 
 if (!isBrowser()) {
-  module.exports = {
+  const exp = {
     // getEncoding,
     isText,
     isBinary,
@@ -816,4 +816,6 @@ if (!isBrowser()) {
     textExtensions,
     scriptInjectionExtensions
   }
+  module.exports = exp;
+  module.exports.default = exp;
 }
