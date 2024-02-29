@@ -18,13 +18,14 @@ detect if a file extension is text/ binary or file is text/ binary
 
 ```
 
-const dr = require("which-fileextension");
-const fs = require("fs");
-
-let txt = fs.readFileSync("./demos/demos.which-fileextension.js");
-let png = fs.readFileSync("./demos/img-black.png");
-let jpeg = fs.readFileSync("./demos/img-red.jpg");
-let gif = fs.readFileSync("./demos/img-yellow.gif");
+const {
+  textExtensions, 
+  binaryExtensions, 
+  scriptInjectionExtensions,
+  detect, isExtension, 
+  isTextExtension, isBinaryExtension, 
+  isText, isBinary
+} = require("which-fileextension");
 
 ```
 
@@ -33,12 +34,6 @@ let gif = fs.readFileSync("./demos/img-yellow.gif");
 ```
 
 const dr = require("which-fileextension");
-const fs = require("fs");
-
-let txt = fs.readFileSync("./demos/demos.which-fileextension.js");
-let png = fs.readFileSync("./demos/img-black.png");
-let jpeg = fs.readFileSync("./demos/img-red.jpg");
-let gif = fs.readFileSync("./demos/img-yellow.gif");
 
 // console.log(dr.textExtensions);
 // console.log(dr.binaryExtensions);
@@ -73,6 +68,12 @@ console.log(dr.isText("test/tester.txt", txt), true) // true
 ```
 
 const dr = require("which-fileextension");
+const fs = require("fs");
+
+let txt = fs.readFileSync("./demos/demos.which-fileextension.js");
+let png = fs.readFileSync("./demos/img-black.png");
+let jpeg = fs.readFileSync("./demos/img-red.jpg");
+let gif = fs.readFileSync("./demos/img-yellow.gif");
 
 console.log(dr.isBinary("test/tester.exe"), true) // true
 console.log(dr.isBinary("./demos/img-red.jpg", jpeg), true) // true
