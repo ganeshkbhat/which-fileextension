@@ -603,12 +603,74 @@ const scriptInjectionExtensions = [
   "sh", "bat"
 ];
 
+const compressedFileExtensions = [
+	"7z",
+	"aar",
+	"ace",
+	"arj",
+	"apk",
+	"arc",
+	"ark",
+	"br",
+	"bz",
+	"bz2",
+	"cab",
+	"chm",
+	"deb",
+	"dmg",
+	"ear",
+	"egg",
+	"epub",
+	"gz",
+	"jar",
+	"lha",
+	"lrz",
+	"lz",
+	"lz4",
+	"lzh",
+	"lzma",
+	"lzo",
+	"lzop",
+	"mar",
+	"par2",
+	"pea",
+	"pet",
+	"pkg",
+	"rar",
+	"rpm",
+	"rz",
+	"s7z",
+	"shar",
+	"sit",
+	"sitx",
+	"tbz",
+	"tbz2",
+	"tgz",
+	"tlz",
+	"txz",
+	"tzo",
+	"war",
+	"whl",
+	"xpi",
+	"xz",
+	"z",
+	"zip",
+	"zipx",
+	"zoo",
+	"zpaq",
+	"zst"
+]
+
 function isBinaryExtension(str) {
   return !!detect(str, binaryExtensions);
 }
 
 function isTextExtension(str) {
   return !!detect(str, textExtensions);
+}
+
+function iscompressedFileExtensions(str) {
+  return !!detect(str, compressedFileExtensions);
 }
 
 function isExtension(str, ext) {
@@ -814,7 +876,9 @@ if (!isBrowser()) {
     isBinaryExtension,
     binaryExtensions,
     textExtensions,
-    scriptInjectionExtensions
+    scriptInjectionExtensions,
+    compressedFileExtensions,
+    iscompressedFileExtensions
   }
   module.exports = exp;
   module.exports.default = exp;
